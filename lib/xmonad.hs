@@ -1,4 +1,3 @@
-{-# OPTIONS -fno-warn-missing-signatures #-}
 import           Control.Monad                  ( forM_ )
 
 import           XMonad                  hiding ( config )
