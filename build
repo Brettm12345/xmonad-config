@@ -18,7 +18,7 @@ OLD=$(find . -newer $ILOC | grep -Ev 'dist*|.git' | wc -l)
 # -- Functions ------------------------------------------------------------------
 help() {
   echo "
-    Configuration script for compiling Aloysius' XMonad setup
+    Configuration script for compiling XMonad setup
 
     Usage:
       ./build [FLAGS]
@@ -27,7 +27,6 @@ help() {
       -h --help    prints this message
       -c --clean   compile then remove build content
       -C --tidy    only remove previous build content
-      -a --all     get all of the supplementary content
 
       No flag causes a standard compile with no cleaning
 
@@ -67,26 +66,10 @@ clean() {
 }
 
 build() {
-  echo "  Building Aloysius, sit tight"
+  echo "  Building, sit tight"
   [[ -n $clean ]] && compile && clean && xmonad --restart && exit
   [[ $# -eq 0 ]] && compile && echo "   Restarting XMonad " &&
     xmonad --restart && exit
-}
-
-all() {
-  printf "   Fetching scripts\r"
-  git clone https://github.com/karetsu/scripts $HOME/.scripts 1>install.log
-  echo "   Scripts installed  "
-
-  printf "   Fetching nix-overlay\r"
-  [[ -d $HOME/.config/nixpkgs ]] &&
-    echo "Overlay exists, skipping" >>install.log ||
-    git clone https://github.com/karetsu/ $HOME/.config/nixpkgs 1>install.log
-
-  (($ + commands[home - manager])) &&
-    home-manager switch ||
-    echo "home-manager does not exist" >>install.log
-  echo "   Overlay installed   "
 }
 
 # -- Runtime --------------------------------------------------------------------
