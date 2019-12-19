@@ -13,7 +13,6 @@ import           XMonad.Util.Run                ( safeSpawn )
 
 import           Bind.Keys                      ( descrKeys )
 import           Bind.Mouse                     ( mouse )
-import           Bus.Events                     ( logHook' )
 
 import           Bus.Hooks                      ( hooks )
 import           App.Alias
