@@ -23,10 +23,6 @@ shouldWrap :: (Direction2D -> Bool -> X ()) -> Direction2D -> X ()
 shouldWrap = flip flip wrapNav
 
 
-windowGo, windowSwap :: Direction2D -> X ()
-windowGo = shouldWrap Nav2D.windowGo
-windowSwap = shouldWrap Nav2D.windowSwap
-
 windows :: Keymap l
 windows = subKeys
   "Windows"
@@ -43,3 +39,4 @@ windows = subKeys
  where
   [focusDown, focusMaster, focusUp] =
     map XMonad.windows [W.focusDown, W.focusMaster, W.focusUp]
+  [windowGo, windowSwap] = map shouldWrap [Nav2D.windowGo, Nav2D.windowSwap]

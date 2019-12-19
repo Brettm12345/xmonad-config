@@ -17,7 +17,6 @@ import           XMonad.Actions.CycleWS         ( toggleWS )
 import           XMonad.Layout.IndependentScreens
                                                 ( VirtualWorkspace
                                                 , onCurrentScreen
-                                                , unmarshallW
                                                 )
 
 
@@ -27,15 +26,6 @@ import           Bind.Keys.Internal             ( Keymap
                                                 , zipKeys
                                                 )
 
-getWindows
-  :: (VirtualWorkspace -> WindowSet -> WindowSet) -> VirtualWorkspace -> X ()
-getWindows f w = do
-  windows $ f w
-  return ()
-
-windowView, windowMove :: VirtualWorkspace -> X ()
-windowView = getWindows greedyView
-windowMove = getWindows shift
 
 
 workspaces :: Keymap l
@@ -46,4 +36,9 @@ workspaces c = subKeys
     [("M-", "View ws", windowView), ("M-S-", "Move window to ws", windowMove)]
   )
   c
-  where ws = XMonad.workspaces c
+ where
+  ws                       = XMonad.workspaces c
+  [windowView, windowMove] = map getWindows [greedyView, shift]
+  getWindows f w = do
+    windows $ f w
+    return ()
