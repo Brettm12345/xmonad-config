@@ -1,0 +1,20 @@
+# files
+.DS_Store
+.idea
+.ghc.environment.x86_64-linux-8.6.4
+prompt-history
+xmonad.errors
+xmonad-x86_64-linux
+
+# directories
+tmp/
+dist/
+dist-newstyle/
+
+# wildcards
+*.log
+*.o
+*.hi
+*.errors
+
+cabal.project.local*
