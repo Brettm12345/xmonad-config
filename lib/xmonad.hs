@@ -7,6 +7,7 @@ import           XMonad.Config.Desktop          ( desktopConfig )
 import           XMonad.Hooks.ManageDocks       ( docks )
 import           XMonad.Layout.Fullscreen       ( fullscreenSupport )
 
+import           XMonad.Config.Kde              ( kdeConfig )
 import           XMonad.Util.Replace            ( replace )
 import           XMonad.Util.Run                ( safeSpawn )
 
@@ -34,16 +35,16 @@ main = do
   replace
   xmonad . pagerHints . docks . ewmh . fullscreenSupport . descrKeys $ config
  where
-  config = desktopConfig { terminal           = term applications
-                         , focusFollowsMouse  = ffm options
-                         , modMask            = mask options
-                         , workspaces         = map show [1 .. 9 :: Int]
-                         , normalBorderColor  = unfocused theme
-                         , focusedBorderColor = focused theme
-                         , borderWidth        = border theme
-                         , mouseBindings      = mouse
-                         , layoutHook         = layout
-                         , manageHook         = hooks
-                         , handleEventHook    = events options
-                         , startupHook        = starts options
-                         }
+  config = kdeConfig { terminal           = term applications
+                     , focusFollowsMouse  = ffm options
+                     , modMask            = mask options
+                     , workspaces         = map show [1 .. 9 :: Int]
+                     , normalBorderColor  = unfocused theme
+                     , focusedBorderColor = focused theme
+                     , borderWidth        = border theme
+                     , mouseBindings      = mouse
+                     , layoutHook         = layout
+                     , manageHook         = manageHook kdeConfig <+> hooks
+                     , handleEventHook    = events options
+                     , startupHook        = starts options
+                     }

@@ -57,9 +57,9 @@ theme :: XMTheme
 theme = XMTheme { highlight  = base00
                 , background = base00
                 , foreground = base04
-                , focused    = base15
-                , unfocused  = basebg
-                , border     = 2
+                , focused    = "#000000"
+                , unfocused  = "#111111"
+                , border     = 1
                 }
 
 
@@ -111,7 +111,7 @@ tabTheme = def { activeColor         = base00
 
 
 decoTheme :: Theme
-decoTheme = def { activeColor         = base00
+decoTheme = def { activeColor         = "#000000"
                 , activeBorderColor   = basebg
                 , activeTextColor     = base06
                 , inactiveColor       = basebg
@@ -120,8 +120,8 @@ decoTheme = def { activeColor         = base00
                 , urgentColor         = basebg
                 , urgentBorderColor   = basebg
                 , urgentTextColor     = base12
-                , fontName            = monospace
+                , fontName            = "xft:Iosevka Nerd Font:size=12"
                 , windowTitleAddons   = [("\xf005", AlignRightOffset 12)]
                 , decoHeight          = 40
-                , decoWidth           = 2560
+                , decoWidth           = 3440
                 }

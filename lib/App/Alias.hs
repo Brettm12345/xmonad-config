@@ -13,6 +13,7 @@ data Applications = Applications
     , term    :: !String
     , emacs   :: !String
     , code    :: !String
+    , pass    :: !String
     , bar     :: !String
     , compton :: !String
     , rofi    :: !String
@@ -29,6 +30,7 @@ applications = Applications { browser = "chromium-snapshot-bin"
                             , term    = "termite"
                             , code    = "code"
                             , rofi    = "rofi -show"
+                            , pass    = "rofi-pass"
                             , bar     = "taffybar"
                             , compton = "compton -b"
                             , wall    = "~/.fehbg"
@@ -44,4 +46,4 @@ spawnApp :: (Applications -> String) -> X ()
 spawnApp app = spawn $ app applications
 
 startup :: [Applications -> String]
-startup = [cursor, notify, wall, compton, xrdb, bar]
+startup = [cursor, notify, wall, xrdb, bar]

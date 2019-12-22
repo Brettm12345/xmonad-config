@@ -9,6 +9,7 @@ import           XMonad                         ( (|||) )
 import           XMonad.Layout                  ( Full(..) )
 import           XMonad.Hooks.ManageDocks       ( avoidStruts )
 
+import           XMonad.Layout.Decoration       ( shrinkText )
 import           XMonad.Layout.BinarySpacePartition
                                                 ( emptyBSP )
 import           XMonad.Layout.Fullscreen       ( fullscreenFull )
@@ -18,7 +19,6 @@ import           XMonad.Layout.NoBorders        ( noBorders
                                                 , smartBorders
                                                 )
 import           XMonad.Layout.ResizableTile    ( ResizableTall(..) )
-import           XMonad.Layout.SimpleFloat      ( simpleFloat )
 import           XMonad.Layout.TwoPane          ( TwoPane(..) )
 import           XMonad.Layout.ThreeColumns     ( ThreeCol(ThreeColMid) )
 import           Theme.Gaps                     ( space
