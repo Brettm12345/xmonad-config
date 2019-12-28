@@ -10,6 +10,7 @@ import           Theme.Sizes                    ( gap
                                                 , bigGap
                                                 , smallGap
                                                 )
+import           Control.Monad                  ( liftM2 )
 import           XMonad.Layout.Spacing          ( spacingRaw
                                                 , Border(..)
                                                 , Spacing
