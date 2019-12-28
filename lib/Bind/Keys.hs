@@ -36,8 +36,16 @@ addKeymap
 addKeymap c a b = a c ^++^ b c
 
 
+-- TODO: Clean this up
 keys :: XConfig l -> [((KeyMask, KeySym), NamedAction)]
-keys c = foldl1 (^++^) $ fmap c [layout, windows, workspaces]
+keys c =
+  launchers c
+    ^++^ windows c
+    ^++^ workspaces c
+    ^++^ layout c
+    ^++^ resize c
+    ^++^ session c
+
 
 
 descrKeys :: XConfig l -> XConfig l
