@@ -1,0 +1,6 @@
+#+TITLE:todo
+* Tasks [ / ]
+** [ ] Clean this up
+  Entered on: [2019-12-27 Fri 23:39] - [[file:~/src/github.com/brettm12345/xmonad-config/lib/Bind/Keys.hs::keys :: XConfig l -> \[((KeyMask, KeySym), NamedAction)\] keys c = launchers c ^++^ windows c ^++^ workspaces c ^++^ layout c ^++^ resize c ^++^ session c]]
+** [ ] Find a better way to handle theming
+** [ ] Export keybinds to org mode and rofi/dmenu
