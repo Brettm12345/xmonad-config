@@ -38,10 +38,10 @@ mkGaps :: Int -> GapsLayout l a
 mkGaps i = G.gaps . map (, i) $ directions
 
 mkSpace :: Int -> l a -> ModifiedLayout Gaps (ModifiedLayout Spacing l) a
-mkSpace g = mkGaps g . spacing g
+mkSpace = liftM2 (.) mkGaps spacing
 
 
--- | Spacing function. Adds gaps and scpace around screen
+-- | Spacing function. Adds gaps and space around screen
 space, spaceBig, spaceSmall
   :: l a -> ModifiedLayout Gaps (ModifiedLayout Spacing l) a
 [space, spaceBig, spaceSmall] = map mkSpace [gap, bigGap, smallGap]
