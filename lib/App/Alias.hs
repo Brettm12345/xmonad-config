@@ -46,4 +46,4 @@ spawnApp :: (Applications -> String) -> X ()
 spawnApp app = spawn $ app applications
 
 startup :: [Applications -> String]
-startup = [cursor, notify, wall, xrdb, bar]
+startup = [cursor, notify, wall, xrdb, bar, browser, code]

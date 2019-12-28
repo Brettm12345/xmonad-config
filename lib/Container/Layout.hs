@@ -39,4 +39,4 @@ layout = avoidStruts . smartBorders $ layouts
   tcm     = named "Three Columns" $ ThreeColMid 1 (3 / 100) (1 / 2)
   twp     = namedSmall "Two Pane" $ TwoPane (3 / 100) (1 / 2)
   tall    = namedSmall "Tall" $ ResizableTall 1 (2 / 100) (1 / 2) []
-  layouts = twp ||| tcm ||| bsp ||| tall
+  layouts = twp ||| tcm ||| bsp ||| tall ||| full

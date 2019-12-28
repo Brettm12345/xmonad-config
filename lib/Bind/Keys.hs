@@ -13,6 +13,7 @@ import           XMonad                         ( XConfig
 import qualified Bind.Show
 
 import qualified Bind.Keys.Internal            as Internal
+import           Bind.Keys.Internal             ( Keymap )
 import           Bind.Keys.Launchers            ( launchers )
 import           Bind.Keys.Layout               ( layout )
 import           Bind.Keys.Windows              ( windows )
@@ -28,14 +29,16 @@ import           XMonad.Util.NamedActions       ( NamedAction
 modMask :: KeyMask
 modMask = Internal.modMask
 
+
+
+addKeymap
+  :: XConfig l -> Keymap l -> Keymap l -> [((KeyMask, KeySym), NamedAction)]
+addKeymap c a b = a c ^++^ b c
+
+
 keys :: XConfig l -> [((KeyMask, KeySym), NamedAction)]
-keys c =
-  launchers c
-    ^++^ windows c
-    ^++^ workspaces c
-    ^++^ layout c
-    ^++^ resize c
-    ^++^ session c
+keys c = foldl1 (^++^) $ fmap c [layout, windows, workspaces]
+
 
 descrKeys :: XConfig l -> XConfig l
 descrKeys = addDescrKeys' ((modMask, xK_F1), Bind.Show.show) keys

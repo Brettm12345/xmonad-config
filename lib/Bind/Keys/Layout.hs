@@ -8,6 +8,8 @@ import           XMonad                         ( withFocused
                                                 )
 import           XMonad.StackSet                ( sink )
 import           XMonad.Layout                  ( ChangeLayout(NextLayout) )
+import           XMonad.Layout.LayoutCombinators
+                                                ( JumpToLayout(..) )
 import           XMonad.Layout.Spacing          ( incScreenWindowSpacing
                                                 , decScreenWindowSpacing
                                                 )
@@ -21,11 +23,13 @@ layout = subKeys
   "Layout"
   [ ("M-<Space>", "Cycle between layouts"  , cycle)
   , ("M-="      , "Increase window spacing", incSpacing)
+  , ("M-f"      , "Open fullscreen"        , full)
   , ("M--"      , "Decrease window spacing", decSpacing)
   , ("M-t"      , "Tile window"            , tile)
   ]
  where
   cycle      = sendMessage NextLayout
+  full       = sendMessage $ JumpToLayout "Fullscreen"
   incSpacing = incScreenWindowSpacing 1
   decSpacing = decScreenWindowSpacing 1
   tile       = withFocused $ windows . sink
