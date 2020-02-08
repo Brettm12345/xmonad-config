@@ -1,5 +1,5 @@
 
-module Bind.Keys.Windows
+module Bind.Keymaps.Windows
   ( windows
   )
 where
@@ -7,7 +7,7 @@ where
 
 import           XMonad.Actions.FloatKeys       ( keysMoveWindowTo )
 import           XMonad.Actions.Promote         ( promote )
-import           Bind.Keys.Internal             ( Keymap
+import           Bind.Keymaps.Internal          ( Keymap
                                                 , subKeys
                                                 , zipKeys
                                                 , directionKeys

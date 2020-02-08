@@ -45,12 +45,7 @@ makeTermScratch (name, cmd) = NS
 
 scratchPads :: NamedScratchpads
 scratchPads =
-  fmap
-      makeTermScratch
-      [ ("tmux"    , "tmux")
-      , ("launcher", "~/bin/sk-apps")
-      , ("pass"    , "~/bin/sk-pass")
-      ]
+  fmap makeTermScratch [("tmux", "tmux")]
     <> [ NS { name  = "file-manager"
             , cmd   = "dolphin"
             , query = hasClass "dolphin"

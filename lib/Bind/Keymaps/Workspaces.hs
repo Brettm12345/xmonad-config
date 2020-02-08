@@ -1,4 +1,4 @@
-module Bind.Keys.Workspaces
+module Bind.Keymaps.Workspaces
   ( workspaces
   )
 where
@@ -20,7 +20,7 @@ import           XMonad.Layout.IndependentScreens
                                                 )
 
 
-import           Bind.Keys.Internal             ( Keymap
+import           Bind.Keymaps.Internal          ( Keymap
                                                 , subKeys
                                                 , wsKeys
                                                 , zipKeys

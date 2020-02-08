@@ -12,16 +12,16 @@ import           XMonad                         ( XConfig
                                                 )
 import qualified Bind.Show
 
-import qualified Bind.Keys.Internal            as Internal
-import           Bind.Keys.Internal             ( Keymap
+import qualified Bind.Keymaps.Internal         as Internal
+import           Bind.Keymaps.Internal          ( Keymap
                                                 , Keybind
                                                 )
-import           Bind.Keys.Launchers            ( launchers )
-import           Bind.Keys.Layout               ( layout )
-import           Bind.Keys.Windows              ( windows )
-import           Bind.Keys.Session              ( session )
-import           Bind.Keys.Workspaces           ( workspaces )
-import           Bind.Keys.Resize               ( resize )
+import           Bind.Keymaps.Launchers         ( launchers )
+import           Bind.Keymaps.Layout            ( layout )
+import           Bind.Keymaps.Windows           ( windows )
+import           Bind.Keymaps.Session           ( session )
+import           Bind.Keymaps.Workspaces        ( workspaces )
+import           Bind.Keymaps.Resize            ( resize )
 
 import           XMonad.Util.NamedActions       ( NamedAction
                                                 , (^++^)

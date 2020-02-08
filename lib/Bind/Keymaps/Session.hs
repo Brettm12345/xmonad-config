@@ -1,9 +1,9 @@
-module Bind.Keys.Session
+module Bind.Keymaps.Session
   ( session
   )
 where
 
-import           Bind.Keys.Internal             ( subKeys
+import           Bind.Keymaps.Internal          ( subKeys
                                                 , Keymap
                                                 )
 

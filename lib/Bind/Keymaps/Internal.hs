@@ -1,4 +1,4 @@
-module Bind.Keys.Internal where
+module Bind.Keymaps.Internal where
 
 import           XMonad                         ( XConfig
                                                 , KeyMask

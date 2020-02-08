@@ -11,7 +11,7 @@ import           XMonad                         ( KeyMask
                                                 , KeySym
                                                 , io
                                                 )
-import           Bind.Keys.Internal             ( Keybind )
+import           Bind.Keymaps.Internal          ( Keybind )
 import           XMonad.Util.NamedActions       ( NamedAction
                                                 , addName
                                                 , showKm

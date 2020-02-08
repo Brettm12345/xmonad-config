@@ -1,6 +1,6 @@
-module Bind.Keys.Resize where
+module Bind.Keymaps.Resize where
 
-import           Bind.Keys.Internal             ( subKeys
+import           Bind.Keymaps.Internal          ( subKeys
                                                 , Keymap
                                                 )
 import           XMonad                         ( Resize(Shrink, Expand)

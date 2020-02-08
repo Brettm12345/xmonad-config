@@ -1,4 +1,4 @@
-module Bind.Keys.Layout
+module Bind.Keymaps.Layout
   ( layout
   )
 where
@@ -14,7 +14,7 @@ import           XMonad.Layout.Spacing          ( incScreenWindowSpacing
                                                 , decScreenWindowSpacing
                                                 )
 import           XMonad.Operations              ( sendMessage )
-import           Bind.Keys.Internal             ( subKeys
+import           Bind.Keymaps.Internal          ( subKeys
                                                 , Keymap
                                                 )
 

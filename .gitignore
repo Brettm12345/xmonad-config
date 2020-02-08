@@ -17,5 +17,6 @@ dist-newstyle/
 *.o
 *.hi
 *.errors
+*.cabal
 
 cabal.project.local*

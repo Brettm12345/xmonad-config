@@ -1,4 +1,4 @@
-module Bind.Keys.Launchers
+module Bind.Keymaps.Launchers
   ( launchers
   )
 where
@@ -12,7 +12,7 @@ import           App.Alias                      ( term
                                                 , screenshot
                                                 )
 import           App.Scratchpad                 ( launchScratchpad )
-import           Bind.Keys.Internal             ( Keymap
+import           Bind.Keymaps.Internal          ( Keymap
                                                 , subKeys
                                                 )
 
