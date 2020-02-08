@@ -37,8 +37,8 @@ workspaces c = subKeys
   )
   c
  where
-  ws                       = XMonad.workspaces c
-  [windowView, windowMove] = map getWindows [greedyView, shift]
+  ws = XMonad.workspaces c
   getWindows f w = do
     windows $ f w
     return ()
+  [windowView, windowMove] = getWindows <$> [greedyView, shift]

@@ -14,4 +14,4 @@ import           XMonad                         ( Resize(Shrink, Expand)
 resize :: Keymap l
 resize = subKeys "Resize"
                  [("M-[", "Shrink", shrink), ("M-]", "Expand", expand)]
-  where [shrink, expand] = map sendMessage [Shrink, Expand]
+  where [shrink, expand] = sendMessage <$> [Shrink, Expand]

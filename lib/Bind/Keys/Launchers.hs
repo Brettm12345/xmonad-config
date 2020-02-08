@@ -5,15 +5,16 @@ where
 
 import           XMonad                         ( spawn )
 import           App.Alias                      ( term
+                                                , projects
+                                                , passwords
                                                 , rofi
                                                 , spawnApp
+                                                , screenshot
                                                 )
 import           App.Scratchpad                 ( launchScratchpad )
 import           Bind.Keys.Internal             ( Keymap
                                                 , subKeys
                                                 )
-
-import           App.Launcher                   ( appLauncher )
 
 launchers :: Keymap l
 launchers = subKeys
@@ -24,10 +25,9 @@ launchers = subKeys
   , ("M-o"         , "Vscode project"  , vscode)
   , ("M-<Return>"  , "Tmux scratchpad" , tmux)
   , ("M-S-<Return>", "Terminal"        , terminal)
+  , ("<Print>"     , "Screenshot"      , shot)
   ]
  where
-  [tmux, fm, emacs] = map launchScratchpad ["tmux", "file-manager", "emacs"]
-  vscode            = spawn "rofi-vscode"
-  pass              = spawn "rofi-pass"
-  launcher          = spawnApp rofi
-  terminal          = spawnApp term
+  [tmux, emacs] = launchScratchpad <$> ["tmux", "emacs"]
+  [launcher, terminal, shot, vscode, pass] =
+    spawnApp <$> [rofi, term, screenshot, projects, passwords]

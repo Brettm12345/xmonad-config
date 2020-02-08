@@ -38,20 +38,20 @@ forceCenterFloat = doFloatDep move
 makeTermScratch :: (String, String) -> NamedScratchpad
 makeTermScratch (name, cmd) = NS
   { name  = name
-  , cmd   = "termite -e " ++ cmd ++ " --name=" ++ name
-  , query = hasClass "Termite" <&&> hasName name
+  , cmd   = "kitty --name='" <> name <> "' -e " <> cmd
+  , query = hasClass "kitty" <&&> hasName name
   , hook  = forceCenterFloat
   }
 
 scratchPads :: NamedScratchpads
 scratchPads =
-  map
+  fmap
       makeTermScratch
       [ ("tmux"    , "tmux")
       , ("launcher", "~/bin/sk-apps")
       , ("pass"    , "~/bin/sk-pass")
       ]
-    ++ [ NS { name  = "file-manager"
+    <> [ NS { name  = "file-manager"
             , cmd   = "dolphin"
             , query = hasClass "dolphin"
             , hook  = forceCenterFloat

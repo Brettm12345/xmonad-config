@@ -28,8 +28,8 @@ layout = subKeys
   , ("M-t"      , "Tile window"            , tile)
   ]
  where
-  cycle      = sendMessage NextLayout
-  full       = sendMessage $ JumpToLayout "Fullscreen"
-  incSpacing = incScreenWindowSpacing 1
-  decSpacing = decScreenWindowSpacing 1
-  tile       = withFocused $ windows . sink
+  cycle = sendMessage NextLayout
+  full  = sendMessage $ JumpToLayout "Fullscreen"
+  [incSpacing, decSpacing] =
+    ($ 1) <$> [incScreenWindowSpacing, decScreenWindowSpacing]
+  tile = withFocused $ windows . sink

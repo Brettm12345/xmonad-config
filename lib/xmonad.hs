@@ -2,11 +2,15 @@ import           Control.Monad                  ( forM_ )
 
 import           XMonad                  hiding ( config )
 
-import           XMonad.Hooks.EwmhDesktops      ( ewmh )
+import           XMonad.Hooks.EwmhDesktops      ( ewmh
+                                                , ewmhDesktopsEventHook
+                                                , ewmhDesktopsStartup
+                                                )
 import           XMonad.Config.Desktop          ( desktopConfig )
 import           XMonad.Hooks.ManageDocks       ( docks )
 import           XMonad.Layout.Fullscreen       ( fullscreenSupport )
 
+import           XMonad.Hooks.SetWMName         ( setWMName )
 import           XMonad.Config.Kde              ( kdeConfig )
 import           XMonad.Util.Replace            ( replace )
 import           XMonad.Util.Run                ( safeSpawn )
@@ -16,35 +20,25 @@ import           Bind.Mouse                     ( mouse )
 
 import           Bus.Hooks                      ( hooks )
 import           App.Alias
-import           Config.Options                 ( theme
-                                                , ffm
-                                                , mask
-                                                , options
-                                                , unfocused
-                                                , focused
-                                                , border
-                                                , events
-                                                , starts
-                                                )
 import           Container.Layout               ( layout )
-import           System.Taffybar.Support.PagerHints
-                                                ( pagerHints )
 
+-- config :: XConfig a
+config = kdeConfig
+  { terminal           = term applications
+  , focusFollowsMouse  = True
+  , modMask            = mod4Mask
+  , workspaces         = show <$> [1 .. 9 :: Int]
+  , normalBorderColor  = "#111111"
+  , focusedBorderColor = "#000000"
+  , mouseBindings      = mouse
+  , layoutHook         = layout
+  , manageHook         = manageHook kdeConfig <+> hooks
+  , handleEventHook    = ewmhDesktopsEventHook
+  , startupHook        = ewmhDesktopsStartup >> do
+                           setWMName "XMonad"
+                           mapM_ spawnAppOnce startup
+  }
 main :: IO ()
 main = do
   replace
-  xmonad . pagerHints . docks . ewmh . fullscreenSupport . descrKeys $ config
- where
-  config = kdeConfig { terminal           = term applications
-                     , focusFollowsMouse  = ffm options
-                     , modMask            = mask options
-                     , workspaces         = map show [1 .. 9 :: Int]
-                     , normalBorderColor  = unfocused theme
-                     , focusedBorderColor = focused theme
-                     , borderWidth        = border theme
-                     , mouseBindings      = mouse
-                     , layoutHook         = layout
-                     , manageHook         = manageHook kdeConfig <+> hooks
-                     , handleEventHook    = events options
-                     , startupHook        = starts options
-                     }
+  xmonad . docks . ewmh . fullscreenSupport . descrKeys $ config

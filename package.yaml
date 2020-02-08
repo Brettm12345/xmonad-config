@@ -1,0 +1,43 @@
+name: xmonad-config
+version: 1.0.0.2
+synopsis: xmonad config
+homepage: https://github.com/brettm12345/xmonad-config
+license: MIT
+license-file: LICENSE
+author: brettm12345
+maintainer: brettmandler@gmail.com
+extra-source-files:
+  - CHANGELOG.md
+default-extensions:
+  - OverloadedStrings
+executable:
+  main: xmonad.hs
+  source-dirs: lib
+  other-modules:
+    - App.Alias
+    - App.Launcher
+    - App.Scratchpad
+    - Bind.Keys
+    - Bind.Show
+    - Bind.Keys.Internal
+    - Bind.Keys.Launchers
+    - Bind.Keys.Layout
+    - Bind.Keys.Resize
+    - Bind.Keys.Session
+    - Bind.Keys.Windows
+    - Bind.Keys.Workspaces
+    - Bind.Mouse
+    - Bus.Hooks
+    - Bus.Queries
+    - Container.Layout
+    - Theme.Gaps
+    - Theme.Sizes
+  dependencies:
+    - base           >= 4.0  && < 5.0
+    - X11            >= 1.8  && < 2.0
+    - containers     >= 0.4  && < 0.7
+    - directory      >= 1.1  && < 1.4
+    - filepath       >= 1.3  && < 1.5
+    - text           >= 0.11 && < 1.3
+    - xmonad         == 0.15
+    - xmonad-contrib == 0.15

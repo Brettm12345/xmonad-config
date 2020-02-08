@@ -38,7 +38,7 @@ windows = subKeys
      , ("M-g"      , "Move window to center"           , toCenter)
      , ("M-S-m"    , "Promote current window to master", promote)
      ]
-  ++ concatMap
+  <> concatMap
        (zipKeys directionKeys directions)
        [("M-", "Focus window", windowGo), ("M-S-", "Swap window", windowSwap)]
   )
@@ -46,6 +46,6 @@ windows = subKeys
   toCenter = withFocused $ XMonad.windows . flip W.float center
     where center = W.RationalRect (1 / 8) (1 / 8) (3 / 4) (3 / 4)
   [focusDown, focusMaster, focusUp] =
-    map XMonad.windows [W.focusDown, W.focusMaster, W.focusUp]
-  [windowGo, windowSwap] = map shouldWrap [Nav2D.windowGo, Nav2D.windowSwap]
+    XMonad.windows <$> [W.focusDown, W.focusMaster, W.focusUp]
+  [windowGo, windowSwap] = shouldWrap <$> [Nav2D.windowGo, Nav2D.windowSwap]
 

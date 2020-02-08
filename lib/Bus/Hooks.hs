@@ -35,13 +35,13 @@ import           XMonad.Hooks.ManageHelpers     ( MaybeManageHook
 
 
 mkHook :: ManageHook -> [Query Bool] -> ManageHook
-mkHook = (composeOne .) . map . flip (-?>)
+mkHook = (composeOne .) . fmap . flip (-?>)
 
 
 handleFloat, handleIgnore, handleCenterFloat, hooks :: ManageHook
-handleFloat = mkHook doFloat [hasClass "Places"]
-handleIgnore = mkHook ignore [hasState "_NET_WM_STATE_SKIP_TASKBAR"]
-  where ignore = doCenterFloat >> doIgnore
+handleFloat = mkHook doFloat [hasClass "Places", hasClass "plasmashell"]
+handleIgnore =
+  mkHook (doCenterFloat >> doIgnore) [hasState "_NET_WM_STATE_SKIP_TASKBAR"]
 handleCenterFloat = mkHook
   doCenterFloat
   [ hasRole "GtkFileChooserDIalog"
@@ -51,10 +51,9 @@ handleCenterFloat = mkHook
   ]
 
 hooks =
-  composeOne [transience, pure True -?> normalTile]
+  composeOne [transience, pure True -?> insertPosition End Newer]
     <+> handleFloat
     <+> handleCenterFloat
     <+> handleIgnore
     <+> manageDocks
     <+> manageScratchPads
-  where normalTile = insertPosition End Newer

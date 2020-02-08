@@ -8,7 +8,7 @@ import qualified Data.Map                      as Map
 
 import           Control.Monad                  ( liftM2 )
 import qualified XMonad
-import qualified XMonad.StackSet               as StackSet
+import           XMonad.StackSet                ( shiftMaster )
 
 import           XMonad.Actions.FloatSnap       ( ifClick
                                                 , snapMagicMove
@@ -34,7 +34,7 @@ snapBoundary :: Maybe Int
 snapBoundary = Just 50
 
 bindMouse :: WindowM -> WindowM
-bindMouse m w = focus w >> m w >> windows StackSet.shiftMaster
+bindMouse m w = focus w >> m w >> windows shiftMaster
 
 drag :: WindowM
 drag = liftM2 (>>)
@@ -45,8 +45,7 @@ drag = liftM2 (>>)
 resize :: WindowM
 resize = bindMouse mouseResizeWindow
 
-type MouseBind = ((KeyMask, Button), WindowM)
-binds :: XConfig l -> [MouseBind]
+binds :: XConfig l -> [((KeyMask, Button), WindowM)]
 binds XConfig { XMonad.modMask = modMask } =
   [((modMask, button1), drag), ((modMask, button3), resize)]
 

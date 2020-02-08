@@ -1,1 +1,3 @@
 - arguments: [--color, --cpp-simple, -XQuasiQuotes, -j]
+- group: { name: generalise, enabled: true }
+- group: { name: dollar, enabled: true }
