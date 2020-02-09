@@ -18,7 +18,7 @@ import           XMonad                         ( Query
                                                 )
 
 import           XMonad.Hooks.InsertPosition    ( insertPosition
-                                                , Position(End)
+                                                , Position(End, Master)
                                                 , Focus(Newer)
                                                 )
 import           XMonad.Hooks.ManageDocks
@@ -51,7 +51,7 @@ handleCenterFloat = mkHook
   ]
 
 hooks =
-  composeOne [transience, pure True -?> insertPosition End Newer]
+  composeOne [transience, pure True -?> insertPosition Master Newer]
     <+> handleFloat
     <+> handleCenterFloat
     <+> handleIgnore

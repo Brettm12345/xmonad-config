@@ -29,16 +29,12 @@ import           Bind.Keymaps.Internal          ( Keymap
 
 
 workspaces :: Keymap l
-workspaces c = subKeys
-  "Workspaces & Projects"
-  (("M-a", "Toggle last workspace", toggleWS) : concatMap
+workspaces c = subKeys "Workspaces & Projects" (keymap <> navigation) c
+ where
+  ws                       = XMonad.workspaces c
+  [windowView, windowMove] = (windows .) <$> [greedyView, shift]
+  keymap                   = [("M-a", "Toggle last workspace", toggleWS)]
+  navigation               = concatMap
     (zipKeys wsKeys ws)
     [("M-", "View ws", windowView), ("M-S-", "Move window to ws", windowMove)]
-  )
-  c
- where
-  ws = XMonad.workspaces c
-  getWindows f w = do
-    windows $ f w
-    return ()
-  [windowView, windowMove] = getWindows <$> [greedyView, shift]
+

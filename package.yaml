@@ -28,6 +28,7 @@ executable:
     - Bind.Mouse
     - Bus.Hooks
     - Bus.Queries
+    - Config.Projects
     - Container.Layout
     - Theme.Gaps
     - Theme.Sizes

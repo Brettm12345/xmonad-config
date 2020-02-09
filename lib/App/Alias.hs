@@ -33,7 +33,7 @@ applications = Applications { browser    = "chromium-snapshot-bin"
                             , rofi       = "rofi -show"
                             , windows    = "rofi -show windows"
                             , passwords  = "rofi-pass"
-                            , projects   = "sh ~/bin/rofi-vscode"
+                            , projects   = "rofi -show projects"
                             , compton    = "compton -b"
                             , wall       = "~/.fehbg"
                             , keyrate    = "xset r rate 300 50"
@@ -41,11 +41,8 @@ applications = Applications { browser    = "chromium-snapshot-bin"
                             }
 
 
-spawnAppOnce :: (Applications -> String) -> X ()
-spawnAppOnce app = spawnOnce $ app applications
-
-spawnApp :: (Applications -> String) -> X ()
-spawnApp app = spawn $ app applications
+spawnAppOnce, spawnApp :: (Applications -> String) -> X ()
+[spawnApp, spawnAppOnce] = (. ($ applications)) <$> [spawn, spawnOnce]
 
 startup :: [Applications -> String]
 startup = [cursor, notify, wall, xrdb]

@@ -15,6 +15,11 @@ import           XMonad.Config.Kde              ( kdeConfig )
 import           XMonad.Util.Replace            ( replace )
 import           XMonad.Util.Run                ( safeSpawn )
 
+import           XMonad.Hooks.InsertPosition    ( insertPosition
+                                                , Position(End, Master)
+                                                , Focus(Newer)
+                                                )
+import           XMonad.Hooks.Minimize          ( minimizeEventHook )
 import           Bind.Keys                      ( descrKeys )
 import           Bind.Mouse                     ( mouse )
 
@@ -32,8 +37,8 @@ config = kdeConfig
   , focusedBorderColor = "#000000"
   , mouseBindings      = mouse
   , layoutHook         = layout
-  , manageHook         = manageHook kdeConfig <+> hooks
-  , handleEventHook    = ewmhDesktopsEventHook
+  , manageHook = insertPosition Master Newer <+> manageHook kdeConfig <+> hooks
+  , handleEventHook    = ewmhDesktopsEventHook <+> minimizeEventHook
   , startupHook        = ewmhDesktopsStartup >> do
                            setWMName "XMonad"
                            mapM_ spawnAppOnce startup

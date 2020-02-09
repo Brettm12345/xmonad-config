@@ -45,4 +45,4 @@ mkSpace = liftM2 (.) mkGaps spacing
 -- | Spacing function. Adds gaps and space around screen
 space, spaceBig, spaceSmall
   :: l a -> ModifiedLayout Gaps (ModifiedLayout Spacing l) a
-[space, spaceBig, spaceSmall] = fmap mkSpace [gap, bigGap, smallGap]
+[space, spaceBig, spaceSmall] = mkSpace <$> [gap, bigGap, smallGap]

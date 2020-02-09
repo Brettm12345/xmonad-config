@@ -14,7 +14,7 @@ import           XMonad.Layout.BinarySpacePartition
                                                 ( emptyBSP )
 import           XMonad.Layout.Fullscreen       ( fullscreenFull )
 import           XMonad.Layout.IfMax            ( IfMax(..) )
-import qualified XMonad.Layout.Named           as N
+import           XMonad.Layout.Named            ( named )
 import           XMonad.Layout.NoBorders        ( noBorders
                                                 , smartBorders
                                                 )
@@ -22,6 +22,7 @@ import           XMonad.Layout.LayoutHints      ( layoutHints )
 import           XMonad.Layout.ResizableTile    ( ResizableTall(..) )
 import           XMonad.Layout.TwoPane          ( TwoPane(..) )
 import           XMonad.Layout.ThreeColumns     ( ThreeCol(ThreeColMid) )
+import           XMonad.Layout.Minimize         ( minimize )
 import           Theme.Gaps                     ( space
                                                 , spaceBig
                                                 , spaceSmall
@@ -29,15 +30,11 @@ import           Theme.Gaps                     ( space
 
 
 -- No type definitions because I can't figure out how to simplify it
-
-full = N.named "Fullscreen" $ noBorders (fullscreenFull Full)
-handleFull = (. IfMax 1 full) . N.named
-named s = handleFull s . space
-namedSmall s = handleFull s . spaceSmall
-layout = avoidStruts . smartBorders $ layouts
+layout =
+  layoutHints . avoidStruts . IfMax 1 full . smartBorders . minimize $ layouts
  where
-  bsp     = named "Binary Partition" emptyBSP
-  tcm     = named "Three Columns" $ ThreeColMid 1 (3 / 100) (1 / 2)
-  twp     = namedSmall "Two Pane" $ TwoPane (3 / 100) (1 / 2)
-  tall    = namedSmall "Tall" $ ResizableTall 1 (2 / 100) (1 / 2) []
-  layouts = layoutHints twp ||| tcm ||| bsp ||| tall ||| full
+  full    = named "Fullscreen" $ noBorders (fullscreenFull Full)
+  tcm     = space . named "Three Columns" $ ThreeColMid 1 (3 / 100) (1 / 2)
+  twp     = spaceSmall . named "Two Pane" $ TwoPane (3 / 100) (1 / 2)
+  tall    = spaceSmall . named "Tall" $ ResizableTall 1 (2 / 100) (1 / 2) []
+  layouts = twp ||| tcm ||| tall ||| full
