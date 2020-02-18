@@ -14,14 +14,27 @@ import           XMonad                         ( Query
                                                 , ManageHook
                                                 , doFloat
                                                 , doIgnore
+                                                , idHook
+                                                , whenJust
                                                 , (<+>)
                                                 )
 
+import           XMonad.Actions.CycleWS         ( moveTo
+                                                , WSType(NonEmptyWS)
+                                                , Direction1D(Next, Prev)
+                                                )
+
+
+import           XMonad.Actions.FindEmptyWorkspace
+                                                ( sendToEmptyWorkspace )
 import           XMonad.Hooks.InsertPosition    ( insertPosition
                                                 , Position(End, Master)
                                                 , Focus(Newer)
                                                 )
-import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageDocks       ( manageDocks )
+import           XMonad.ManageHook              ( doF
+                                                , liftX
+                                                )
 import           XMonad.Hooks.ManageHelpers     ( MaybeManageHook
                                                 , (-?>)
                                                 , composeOne

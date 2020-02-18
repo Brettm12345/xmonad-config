@@ -1,6 +1,8 @@
 name: xmonad-config
 version: 1.0.0.2
 synopsis: xmonad config
+verbatim:
+  cabal-version: 2.2
 homepage: https://github.com/brettm12345/xmonad-config
 license: MIT
 license-file: LICENSE

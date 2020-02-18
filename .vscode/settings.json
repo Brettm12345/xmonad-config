@@ -1,9 +1,10 @@
 {
-  "nixEnvSelector.nixShellConfig": "NOT_MODIFIED_ENV",
+  "nixEnvSelector.nixShellConfig": "${workspaceRoot}/shell.nix",
   "cSpell.words": [
     "Combinators",
     "Fullscreen",
     "Keybind",
-    "descr"
+    "descr",
+    "xmonad"
   ]
 }

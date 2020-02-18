@@ -44,7 +44,7 @@ windows = subKeys
   )
  where
   toCenter = withFocused $ XMonad.windows . flip W.float center
-    where center = W.RationalRect (1 / 8) (1 / 8) (3 / 4) (3 / 4)
+    where center = W.RationalRect (1 / 8) (1 / 8) (15 / 16) (15 / 16)
   [focusDown, focusMaster, focusUp] =
     XMonad.windows <$> [W.focusDown, W.focusMaster, W.focusUp]
   [windowGo, windowSwap] = shouldWrap <$> [Nav2D.windowGo, Nav2D.windowSwap]

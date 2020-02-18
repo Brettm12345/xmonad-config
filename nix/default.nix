@@ -1,8 +1,7 @@
 { sources ? import ./sources.nix }:
 with {
   overlay = _: _: {
-    niv = (import sources.niv
-      { }).niv; # this is how you import niv into the overlay as well
+    niv = (import sources.niv { }).niv;
     snack = (import sources.snack).snack-exe;
   };
 };
