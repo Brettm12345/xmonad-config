@@ -30,8 +30,8 @@ forceCenterFloat = doFloatDep move
   move _ = RationalRect x y w h
 
   w, h, x, y :: Rational
-  w = 15 / 16
-  h = 15 / 16
+  w = 31 / 32
+  h = 31 / 32
   x = (1 - w) / 2
   y = (1 - h) / 2
 

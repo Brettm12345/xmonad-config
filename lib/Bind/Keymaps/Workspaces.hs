@@ -37,4 +37,3 @@ workspaces c = subKeys "Workspaces & Projects" (keymap <> navigation) c
   navigation               = concatMap
     (zipKeys wsKeys ws)
     [("M-", "View ws", windowView), ("M-S-", "Move window to ws", windowMove)]
-
