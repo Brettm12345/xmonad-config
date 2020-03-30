@@ -5,7 +5,7 @@ let
   inherit (nixpkgs) pkgs;
 
   f = { mkDerivation, base, Cabal, cabal-install, containers, stdenv, X11
-    , xmonad, xmonad-contrib, xmonad-extras }:
+    , ormolu, xmonad, xmonad-contrib, xmonad-extras }:
     mkDerivation {
       pname = "xmonad-config";
       version = "1.0.4.0";
@@ -36,4 +36,17 @@ let
 
   drv = variant (haskellPackages.callPackage f { });
 
-in if pkgs.lib.inNixShell then drv.env else drv
+in (pkgs.haskellPackages.shellFor {
+  withHoogle = true;
+  packages = p: [ drv ];
+}).overrideAttrs (orig: {
+  buildInputs = orig.buildInputs ++ (with pkgs; [ lorri direnv ])
+    ++ (with pkgs.haskellPackages; [
+      cabal-install
+      hpack
+      hasktags
+      hlint
+      hoogle
+    ]);
+})
+

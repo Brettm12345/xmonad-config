@@ -4,7 +4,7 @@
 XMONAD=$HOME/.xmonad
 BUILD=$XMONAD/build
 
-test -d $XMONAD || mkdir -p $XMONAD
+test -d "$XMONAD" || mkdir -p "$XMONAD"
 
 echo "Creating build script..."
 echo '#!/bin/sh' >"$BUILD"

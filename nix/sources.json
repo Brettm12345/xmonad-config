@@ -5,10 +5,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "2ecfd86b631714b457e56d70dd83fa60435baeb6",
-        "sha256": "01j6727cws8blg1npp54b4w6xa0gpgyzhyws2vqgp8clnlnmqqhi",
+        "rev": "98c74a80934123cb4c3bf3314567f67311eb711a",
+        "sha256": "1w8n54hapd4x9f1am33icvngkqns7m3hl9yair38yqq08ffwg0kn",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/2ecfd86b631714b457e56d70dd83fa60435baeb6.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/98c74a80934123cb4c3bf3314567f67311eb711a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -17,10 +17,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "c8db7a8a16ee9d54103cade6e766509e1d1c8d7b",
-        "sha256": "1b3h4mwpi10blzpvgsc0191k4shaw3nw0qd2p82hygbr8vv4g9dv",
+        "rev": "34c7eb7545d155cc5b6f499b23a7cb1c96ab4d59",
+        "sha256": "11z6ajj108fy2q5g8y4higlcaqncrbjm3dnv17pvif6avagw4mcb",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/c8db7a8a16ee9d54103cade6e766509e1d1c8d7b.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/34c7eb7545d155cc5b6f499b23a7cb1c96ab4d59.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "snack": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nmattia",
         "repo": "snack",
-        "rev": "d03a41eaba6536ae7b45c97a7c7fd9d8b73a7685",
-        "sha256": "0sz2kvr455xrzczd8fs02fbmn21rqycpyh1ckz0w6qx08dwqbx6h",
+        "rev": "7307e22046329659c57850ff9059fec6bc3cec8a",
+        "sha256": "1md12k3w1n72p2v4pcliq1n82ixzc870lsqlpq0136p23fykcyxn",
         "type": "tarball",
-        "url": "https://github.com/nmattia/snack/archive/d03a41eaba6536ae7b45c97a7c7fd9d8b73a7685.tar.gz",
+        "url": "https://github.com/nmattia/snack/archive/7307e22046329659c57850ff9059fec6bc3cec8a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

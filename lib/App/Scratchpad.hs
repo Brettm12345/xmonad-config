@@ -4,60 +4,58 @@ module App.Scratchpad
   )
 where
 
-import           Bus.Queries                    ( hasName
-                                                , hasClass
+import           Bus.Queries                    ( hasClass
+                                                , hasName
                                                 )
-
-import           XMonad                         ( ManageHook
-                                                , (<&&>)
+import           XMonad                         ( (<&&>)
+                                                , ManageHook
                                                 , X(..)
                                                 )
-import           XMonad.Hooks.ManageHelpers     ( doFloatDep )
+import           XMonad.Hooks.ManageHelpers     ( doFloatDep
+                                                , doFullFloat
+                                                )
+import           XMonad.StackSet                ( RationalRect(..) )
 import           XMonad.Util.NamedScratchpad    ( NamedScratchpad(..)
                                                 , NamedScratchpads
-                                                , namedScratchpadManageHook
-                                                , namedScratchpadAction
                                                 , customFloating
+                                                , namedScratchpadAction
+                                                , namedScratchpadManageHook
                                                 )
-
-
-import           XMonad.StackSet                ( RationalRect(..) )
 
 forceCenterFloat :: ManageHook
 forceCenterFloat = doFloatDep move
  where
   move :: RationalRect -> RationalRect
   move _ = RationalRect x y w h
-
   w, h, x, y :: Rational
-  w = 31 / 32
-  h = 31 / 32
+  w = 3 / 4
+  h = 3 / 4
   x = (1 - w) / 2
   y = (1 - h) / 2
 
-makeTermScratch :: (String, String) -> NamedScratchpad
-makeTermScratch (name, cmd) = NS
-  { name  = name
-  , cmd   = "kitty --name='" <> name <> "' -e " <> cmd
-  , query = hasClass "kitty" <&&> hasName name
-  , hook  = forceCenterFloat
-  }
-
 scratchPads :: NamedScratchpads
 scratchPads =
-  fmap makeTermScratch [("tmux", "tmux")]
-    <> [ NS { name  = "file-manager"
-            , cmd   = "dolphin"
-            , query = hasClass "dolphin"
-            , hook  = forceCenterFloat
-            }
-       , NS { name  = "emacs"
-            , cmd   = "emacs"
-            , query = hasClass "Emacs"
-            , hook  = forceCenterFloat
-            }
-       ]
-
+  [ NS { name  = "tmux"
+       , cmd   = "kitty --name=tmux tmux"
+       , query = hasName "tmux"
+       , hook  = doFullFloat
+       }
+  , NS { name  = "file-manager"
+       , cmd   = "dolphin"
+       , query = hasClass "dolphin"
+       , hook  = forceCenterFloat
+       }
+  , NS { name  = "mpv"
+       , cmd   = "~/.nix-profile/bin/mpv /mnt/media/tv"
+       , query = hasClass "mpv"
+       , hook  = forceCenterFloat
+       }
+  , NS { name  = "emacs"
+       , cmd   = "emacs"
+       , query = hasClass "Emacs"
+       , hook  = doFullFloat
+       }
+  ]
 
 launchScratchpad :: String -> X ()
 launchScratchpad = namedScratchpadAction scratchPads

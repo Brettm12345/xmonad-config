@@ -1,20 +1,20 @@
 module Bus.Queries
-  ( hasProperty
-  , hasRole
-  , hasType
-  , hasState
-  , hasClass
-  , hasName
+  ( hasProperty,
+    hasRole,
+    hasType,
+    hasState,
+    hasClass,
+    hasName,
   )
 where
 
-import           XMonad                         ( Query
-                                                , className
-                                                , stringProperty
-                                                , appName
-                                                , (=?)
-                                                )
-
+import XMonad
+  ( (=?),
+    Query,
+    appName,
+    className,
+    stringProperty,
+  )
 
 hasProperty :: String -> String -> Query Bool
 hasProperty = (=?) . stringProperty

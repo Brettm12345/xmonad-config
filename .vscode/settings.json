@@ -5,6 +5,16 @@
     "Fullscreen",
     "Keybind",
     "descr",
+    "plasmashell",
     "xmonad"
+  ],
+  "shellcheck.customArgs": ["-e SC2016"],
+  "cSpell.ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/objects/**",
+    ".vscode",
+    "**/icons/**"
   ]
 }

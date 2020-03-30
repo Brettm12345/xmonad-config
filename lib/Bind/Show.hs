@@ -1,24 +1,25 @@
 module Bind.Show
-  ( show
+  ( show,
   )
 where
 
-import           Prelude                 hiding ( show )
-
-import           System.IO                      ( hClose )
-
-import           XMonad                         ( KeyMask
-                                                , KeySym
-                                                , io
-                                                )
-import           Bind.Keymaps.Internal          ( Keybind )
-import           XMonad.Util.NamedActions       ( NamedAction
-                                                , addName
-                                                , showKm
-                                                )
-import           XMonad.Util.Run                ( spawnPipe
-                                                , hPutStr
-                                                )
+import Bind.Keymaps.Internal (Keybind)
+import System.IO (hClose)
+import XMonad
+  ( KeyMask,
+    KeySym,
+    io,
+  )
+import XMonad.Util.NamedActions
+  ( NamedAction,
+    addName,
+    showKm,
+  )
+import XMonad.Util.Run
+  ( hPutStr,
+    spawnPipe,
+  )
+import Prelude hiding (show)
 
 show :: [Keybind] -> NamedAction
 show x = addName "Show Keybindings" . io $ do
